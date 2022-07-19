@@ -28,7 +28,7 @@ namespace CarPrice.WebApp.Controllers
 
                 return new JsonResult(new
                 {
-                    type = "error",
+                    type = "success",
                     data = chartData
                 });
 
@@ -51,7 +51,10 @@ namespace CarPrice.WebApp.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ErrorViewModel 
+            { 
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier 
+            });
         }
     }
 }
