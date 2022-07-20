@@ -4,22 +4,23 @@ $(document).ready(function () {
 });
 
 function consultaPrecosFipe() {
+    var base_url = window.location.origin;
 
     $("#alertSearch").attr("hidden", true);
 
-    //var url = baseUrl()
+    var url = base_url + "/Search/SearchByFipeCode"
 
-    //$.get(url, function (data) {
+    $.get(url, function (data) {
 
-    //    if (type = "sucess") {
+        if (type = "sucess") {
 
-    //    } else {
-    //        $("#alertSearchMessage").text(data.message);
-    //        $("#alertSearch").attr("hidden", false);
-    //    }
-    //    fillInPriceChart(data);
-    //    alert("Load was performed.");
-    //});
+        } else {
+            $("#alertSearchMessage").text(data.message);
+            $("#alertSearch").attr("hidden", false);
+        }
+        //fillInPriceChart(data);
+        //alert("Load was performed.");
+    });
 
     fillInPriceChart();    
 }

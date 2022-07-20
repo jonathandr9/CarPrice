@@ -9,7 +9,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BrasilApiAdapter\BrasilApiAdapter.csproj" />
+    <ProjectReference Include="..\CarPrice.Application\CarPrice.Application.csproj" />
+    <ProjectReference Include="..\CarPrice.Domain\CarPrice.Domain.csproj" />
   </ItemGroup>
 
 </Project>

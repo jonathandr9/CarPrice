@@ -1,3 +1,7 @@
+using BrasilApiAdapter;
+using CarPrice.Application;
+using CarPrice.Domain.Adapters;
+using CarPrice.Domain.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +28,16 @@ namespace CarPrice.WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+            services.AddAutoMapper(typeof(BrasilApiProfile));
+            services.AddControllersWithViews();
+            services.AddScoped<IBrasilApiAdapter, BrasilApi>();
+            services.AddScoped<ISearchService, SearchService>();
+            services.AddSingleton<IConfiguration>(Configuration);
+
+            services.AddBrasilApiAdapter(
+                Configuration.GetSection("BrasilApiAdapterConfiguration")
+                .Get<BrasilApiAdapterConfiguration>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

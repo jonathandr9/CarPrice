@@ -1,18 +1,23 @@
-﻿using CarPrice.WebApp.Models;
+﻿using CarPrice.Domain.Services;
+using CarPrice.WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace CarPrice.WebApp.Controllers
 {
     public class SearchController : Controller
     {
         private readonly ILogger<SearchController> _logger;
+        private readonly ISearchService _searchService;
 
-        public SearchController(ILogger<SearchController> logger)
+        public SearchController(ILogger<SearchController> logger,
+            ISearchService searchService)
         {
             _logger = logger;
+            _searchService = searchService;
         }
 
         public IActionResult Index()
@@ -20,11 +25,14 @@ namespace CarPrice.WebApp.Controllers
             return View();
         }
 
-        public JsonResult SearchByFipeCode()
+        public async Task<JsonResult> SearchByFipeCode(string fipeCode, 
+            int year)
         {
             try
             {
-                var chartData = "";
+                var chartData = await _searchService.SearchPricesByFipeCode(
+                    "001004-9",
+                    year);
 
                 return new JsonResult(new
                 {
