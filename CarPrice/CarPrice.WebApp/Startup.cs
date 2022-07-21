@@ -30,6 +30,7 @@ namespace CarPrice.WebApp
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
             services.AddAutoMapper(typeof(BrasilApiProfile));
+            services.AddAutoMapper(typeof(Startup),typeof(WebMapperProfile));
             services.AddControllersWithViews();
             services.AddScoped<IBrasilApiAdapter, BrasilApi>();
             services.AddScoped<ISearchService, SearchService>();

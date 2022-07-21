@@ -8,15 +8,15 @@ namespace CarPrice.Domain.Models
 {
     public class CarPrices
     {
-        public string price { get; set; }
-        public string brand { get; set; }
-        public string model { get; set; }
-        public int modelYear { get; set; }
-        public string fuel { get; set; }
-        public string codigoFipe { get; set; }
-        public string referenceMonth { get; set; }
-        public int vehicleType { get; set; }
-        public string acronymFuel { get; set; }
-        public string consultationDate { get; set; }
+        public decimal Price { get; set; }
+        public string Brand { get; set; }
+        public string Model { get; set; }
+        public int ModelYear { get; set; }
+        public string Fuel { get; set; }
+        public string CodigoFipe { get; set; }
+        public string ReferenceMonth { get; set; }
+        public int VehicleType { get; set; }
+        public string AcronymFuel { get; set; }
+        public string ConsultationDate { get; set; }
     }
 }

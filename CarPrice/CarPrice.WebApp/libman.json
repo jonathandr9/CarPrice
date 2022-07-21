@@ -8,6 +8,10 @@
       "files": [
         "jquery.min.js"
       ]
+    },
+    {
+      "library": "jquery.maskedinput@1.4.1",
+      "destination": "wwwroot/vendor/jquery.maskedinput/"
     }
   ]
 }

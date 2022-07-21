@@ -29,7 +29,7 @@ namespace CarPrice.Application
                     fipeCode, (int)monthYear);
 
                 var priceofYear = priceOfAllYears.FirstOrDefault(
-                    p => p.modelYear == year);
+                    p => p.ModelYear == year);
 
                 prices.Add(priceofYear);
             }
