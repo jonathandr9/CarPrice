@@ -11,10 +11,13 @@ namespace CarPrice.Application
     public class SearchService : ISearchService
     {
         private readonly IBrasilApiAdapter _brasilApiAdapter;
+        private readonly ICarPhotoAdapter _carPhotoAdapter;
 
-        public SearchService(IBrasilApiAdapter brasilApiAdapter)
+        public SearchService(IBrasilApiAdapter brasilApiAdapter,
+             ICarPhotoAdapter carPhotoAdapter)
         {
             _brasilApiAdapter = brasilApiAdapter;
+            _carPhotoAdapter = carPhotoAdapter;
         }
 
         public async Task<IEnumerable<CarPrices>> SearchPricesByFipeCode(
@@ -35,6 +38,18 @@ namespace CarPrice.Application
             }
 
             return prices;
+        }
+
+        public async Task<CarPhoto> SearchPhotoByFipeCode(string fipeCode,
+            int year)
+        {
+            return await _carPhotoAdapter.GetCarPhotoByFipeCode(fipeCode,
+                year);
+        }
+
+        public async Task AddCarPhoto(CarPhoto carPhoto)
+        {
+            _carPhotoAdapter.AddCarPhoto(carPhoto);
         }
     }
 }

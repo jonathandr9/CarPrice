@@ -6,6 +6,7 @@ namespace CarPrice.WebApp.Models.Search
     {
         public string CurrentPrice { get; set; }
         public string AveragePrice { get; set; }
+        public string Photo { get; set; }
         public IEnumerable<PriceVariationChartDto> PriceVariationChart { get; set; }
     }
 }

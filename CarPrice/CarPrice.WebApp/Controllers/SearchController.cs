@@ -32,35 +32,29 @@ namespace CarPrice.WebApp.Controllers
             return View();
         }
 
-        public async Task<JsonResult> SearchByFipeCode(string fipeCode, 
+        public async Task<JsonResult> SearchByFipeCode(string fipeCode,
             int year)
         {
             try
             {
-                var data = await _searchService.SearchPricesByFipeCode(
-                    fipeCode,
-                    year);
+                var prices = await _searchService.SearchPricesByFipeCode(fipeCode, year);
+                var photo = await _searchService.SearchPhotoByFipeCode(fipeCode, year);
 
-                var chartData = _mapper.Map<SearchPriceGetViewModel>(data.LastOrDefault());
 
-                chartData.PriceVariationChart =
-                    _mapper.Map<IEnumerable<PriceVariationChartDto>>(data);
+                var chartData = _mapper.Map<SearchPriceGetViewModel>(prices.LastOrDefault());
+                chartData.PriceVariationChart = _mapper.Map<IEnumerable<PriceVariationChartDto>>(prices);
+                chartData.AveragePrice = string.Format("{0:C}", prices.Average(x => x.Price));
+                chartData.Photo = photo != null ? photo.PhotoBase64 : "";
 
-                chartData.AveragePrice = string.Format("{0:C}", data.Average(x => x.Price));
 
-                return new JsonResult(new
-                {
-                    type = "success",
-                    data = chartData
-                });
-
+                return new JsonResult(new { type = "success", data = chartData });
             }
             catch (Exception ex)
             {
-                return new JsonResult(new 
-                { 
+                return new JsonResult(new
+                {
                     type = "error",
-                    message = ex.Message 
+                    message = ex.Message
                 });
             }
         }
@@ -68,9 +62,9 @@ namespace CarPrice.WebApp.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel 
-            { 
-                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier 
+            return View(new ErrorViewModel
+            {
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
             });
         }
     }

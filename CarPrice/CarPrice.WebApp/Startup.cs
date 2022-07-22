@@ -2,6 +2,7 @@ using BrasilApiAdapter;
 using CarPrice.Application;
 using CarPrice.Domain.Adapters;
 using CarPrice.Domain.Services;
+using CarPrice.SqlAdapter.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -39,6 +40,10 @@ namespace CarPrice.WebApp
             services.AddBrasilApiAdapter(
                 Configuration.GetSection("BrasilApiAdapterConfiguration")
                 .Get<BrasilApiAdapterConfiguration>());
+
+            services.AddCarPriceSqlAdapter(
+                Configuration.GetSection("CarPriceSqlConfiguration")
+                .Get<SqlAdapterConfiguration>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

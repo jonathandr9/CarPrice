@@ -17,9 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarPrice.Tests", "CarPrice.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BrasilApiAdapter", "BrasilApiAdapter\BrasilApiAdapter.csproj", "{1167D817-EA87-465C-996B-6165C7ACCFC1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlAdapter", "SqlAdapter\SqlAdapter.csproj", "{6BDB9FBC-3AEA-4F15-838B-1013132D45A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarPrice.SqlAdapter", "SqlAdapter\CarPrice.SqlAdapter.csproj", "{6BDB9FBC-3AEA-4F15-838B-1013132D45A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarPrice.WebApp", "CarPrice.WebApp\CarPrice.WebApp.csproj", "{30CD19E9-5376-4F51-97FD-4613EEB72481}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarPrice.WebApp", "CarPrice.WebApp\CarPrice.WebApp.csproj", "{30CD19E9-5376-4F51-97FD-4613EEB72481}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

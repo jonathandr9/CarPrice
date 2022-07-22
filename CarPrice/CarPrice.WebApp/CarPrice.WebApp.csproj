@@ -17,6 +17,7 @@
     <ProjectReference Include="..\BrasilApiAdapter\BrasilApiAdapter.csproj" />
     <ProjectReference Include="..\CarPrice.Application\CarPrice.Application.csproj" />
     <ProjectReference Include="..\CarPrice.Domain\CarPrice.Domain.csproj" />
+    <ProjectReference Include="..\SqlAdapter\CarPrice.SqlAdapter.csproj" />
   </ItemGroup>
 
 </Project>
