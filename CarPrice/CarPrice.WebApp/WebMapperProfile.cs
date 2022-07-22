@@ -15,6 +15,8 @@ namespace CarPrice.WebApp
             CreateMap<CarPrices, SearchPriceGetViewModel>()
                 .ForMember(d => d.CurrentPrice,
                     m => m.MapFrom(s => string.Format("{0:C}", s.Price)));
+
+            CreateMap<AddCarPhotoPost, CarPhoto>();
         }
     }
 }

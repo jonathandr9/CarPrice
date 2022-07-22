@@ -24,7 +24,7 @@ namespace CarPrice.SqlAdapter
         public async Task AddCarPhoto(CarPhoto carPhoto)
         {
             await _context.Connection.ExecuteAsync(
-                        @"INSERT INTO [dbo].[HistoricoStatusProposta] 
+                        @"INSERT INTO [dbo].[CarPhoto] 
                             (FipeCode,
                              PhotoBase64,
                              ModelYear) 
@@ -47,7 +47,7 @@ namespace CarPrice.SqlAdapter
                           FROM CarPhoto WITH (NOLOCK)
                           WHERE FipeCode = @FipeCode
                           AND ModelYear = @ModelYear",
-                        param: new { NumeroProposta = fipeCode },
+                        param: new { FipeCode = fipeCode, ModelYear = year},
                         commandType: CommandType.Text);
         }
 

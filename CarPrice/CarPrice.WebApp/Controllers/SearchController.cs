@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CarPrice.Domain.Models;
 using CarPrice.Domain.Services;
 using CarPrice.WebApp.Models;
 using CarPrice.WebApp.Models.Search;
@@ -48,6 +49,31 @@ namespace CarPrice.WebApp.Controllers
 
 
                 return new JsonResult(new { type = "success", data = chartData });
+            }
+            catch (Exception ex)
+            {
+                return new JsonResult(new
+                {
+                    type = "error",
+                    message = ex.Message
+                });
+            }
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> AddPhoto(
+            [FromBody] AddCarPhotoPost addCarPhotoPost)
+        {
+            try
+            {
+                var carPhoto = _mapper.Map<CarPhoto>(addCarPhotoPost);
+
+                await _searchService.AddCarPhoto(carPhoto);
+
+                return new JsonResult(new { 
+                    type = "success",
+                    message="Foto Adicionada com Sucesso!"
+                });
             }
             catch (Exception ex)
             {
